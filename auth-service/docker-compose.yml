@@ -1,0 +1,75 @@
+version: '3.4'
+
+services:
+  authservice:
+    container_name: authservice
+    image: authservice
+    build:
+      network: host
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+      ACCESS_TOKEN_SECRET: e573eef32ee554ad4e05682c8acc621176707 80e6d21545dd137ce1b43da9e897c92c5eecb0 d766cb52e530e1d176a0ec99767b33ba98d393 313e2228ce1d92b
+    ports:
+      - 7040:7040
+    restart: always
+
+  friendservice:
+    container_name: friendservice
+    image: friendservice
+    build:
+      network: host
+      context: ../friend-service
+      dockerfile: ../friend-service/Dockerfile
+    environment:
+      NODE_ENV: production
+      ACCESS_TOKEN_SECRET: e573eef32ee554ad4e05682c8acc621176707 80e6d21545dd137ce1b43da9e897c92c5eecb0 d766cb52e530e1d176a0ec99767b33ba98d393 313e2228ce1d92b
+    ports:
+      - 7050:7050
+    restart: always
+
+  gameservice:
+    container_name: gameservice
+    image: gameservice
+    build:
+      network: host
+      context: ../game-service
+      dockerfile: ../game-service/Dockerfile
+    environment:
+      NODE_ENV: production
+      ACCESS_TOKEN_SECRET: e573eef32ee554ad4e05682c8acc621176707 80e6d21545dd137ce1b43da9e897c92c5eecb0 d766cb52e530e1d176a0ec99767b33ba98d393 313e2228ce1d92b
+    ports:
+      - 7060:7060
+    restart: always 
+
+  publicationservice:
+    container_name: publicationservice
+    image: publicationservice
+    build:
+      network: host
+      context: ../publication-service
+      dockerfile: ../publication-service/Dockerfile
+    environment:
+      NODE_ENV: production
+      ACCESS_TOKEN_SECRET: e573eef32ee554ad4e05682c8acc621176707 80e6d21545dd137ce1b43da9e897c92c5eecb0 d766cb52e530e1d176a0ec99767b33ba98d393 313e2228ce1d92b
+    ports:
+      - 7070:7070
+    restart: always 
+
+  teamservice:
+    container_name: teamservice
+    image: teamservice
+    build:
+      network: host
+      context: ../team-service
+      dockerfile: ../team-service/Dockerfile
+    environment:
+      NODE_ENV: production
+      ACCESS_TOKEN_SECRET: e573eef32ee554ad4e05682c8acc621176707 80e6d21545dd137ce1b43da9e897c92c5eecb0 d766cb52e530e1d176a0ec99767b33ba98d393 313e2228ce1d92b
+    ports:
+      - 7080:7080
+    restart: always 
+
+volumes:
+  data: 

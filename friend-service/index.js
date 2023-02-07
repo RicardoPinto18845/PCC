@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT_ONE || 7010;
+const PORT = process.env.PORT_ONE || 7050;
 const jwt = require("jsonwebtoken");
 const password = process.env.PASSWORD
 const connectDB = require("./moongoDB");

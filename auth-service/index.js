@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT_ONE || 7070;
+const PORT = process.env.PORT_ONE || 7040;
 const jwt = require("jsonwebtoken");
 const password = process.env.PASSWORD
 const connectDB = require("./moongoDB");
@@ -16,17 +16,10 @@ connectDB();
 app.use(express.json());
 app.use(cors());
 
-
-app.use("/", require("./controller/routes/funcroutes"))
-
+app.use("/", require("./controller/routes/authroutes"))
 //rota para docs
 app.use('/apidocjs',express.static('./static/apidoc'));
 
-
 app.listen(PORT, () => {
-    console.log(`Func-Service at ${PORT}`);
+    console.log(`Auth-Service at ${PORT}`);
 });
-
-
-
-
